@@ -1,0 +1,35 @@
+Python requests:
+25 intentos
+0,079 segundos
+317,98 solicitudes/s
+
+Hydra:
+25 intentos
+1,559 segundos
+≈16,04 solicitudes/s
+
+Burp Suite Community:
+25 intentos
+≈14,84 segundos
+≈1,68 solicitudes/s
+
+cURL:
+Se utilizó manualmente para una solicitud válida y otra inválida.
+No se utilizó como herramienta automática de fuerza bruta.
+
+Interpretación:
+
+En este experimento local, el script Python obtuvo el menor tiempo, seguido de
+Hydra y posteriormente Burp Suite Community.
+
+Esta medición corresponde únicamente a las condiciones de este laboratorio:
+DVWA se encuentra en localhost, sólo se realizaron 25 combinaciones y Burp
+Intruder Community presenta una velocidad considerablemente menor.
+
+Por ello, los resultados no deben interpretarse como un benchmark general de
+las herramientas, sino como una comparación de la ejecución realizada en este
+entorno específico.
+
+cURL no se comparó directamente en velocidad de fuerza bruta, ya que en el
+laboratorio se utilizó para realizar solicitudes individuales y comparar una
+respuesta válida con una inválida.

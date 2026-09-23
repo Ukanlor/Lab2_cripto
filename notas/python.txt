@@ -1,0 +1,27 @@
+El script utiliza requests.Session() para realizar las solicitudes HTTP.
+
+Los parámetros enviados mediante GET son:
+- username
+- password
+- Login
+
+La cabecera/cookie más importante para esta prueba es:
+
+Cookie: security=low; PHPSESSID=...
+
+PHPSESSID identifica la sesión autenticada de DVWA, mientras que security=low
+mantiene el nivel de seguridad utilizado durante las pruebas.
+
+En Wireshark también se observó:
+
+User-Agent: python-requests/2.31.0
+
+Este encabezado permite reconocer que las solicitudes fueron generadas mediante
+la biblioteca requests de Python.
+
+El script determina que una combinación es válida buscando en la respuesta el
+texto:
+
+"Welcome to the password protected area"
+
+Se probaron 25 combinaciones y se encontraron 4 pares válidos.

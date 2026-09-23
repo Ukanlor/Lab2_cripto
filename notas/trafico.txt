@@ -1,0 +1,31 @@
+cURL:
+En la captura de Wireshark se observa una solicitud HTTP GET al formulario de
+fuerza bruta. El encabezado User-Agent contiene "curl/8.5.0", lo que permite
+relacionar directamente la petición con cURL.
+
+Hydra:
+Hydra genera múltiples solicitudes consecutivas modificando las combinaciones de
+usuario y contraseña. En los paquetes analizados se observa el encabezado
+"User-Agent: Mozilla/5.0 (Hydra)", que permite identificar claramente la herramienta.
+
+Burp Suite:
+Burp Intruder también genera múltiples solicitudes cambiando los campos username
+y password. Sin embargo, el User-Agent observado corresponde a Firefox, debido a
+que Burp reutiliza los encabezados de la petición original interceptada. Por ello,
+un paquete individual no identifica a Burp de manera tan directa como ocurre con
+cURL o Hydra.
+
+Diferencias:
+- cURL se utilizó para realizar solicitudes individuales.
+- Hydra generó múltiples intentos automáticos y mostró un User-Agent identificable.
+- Burp Intruder generó múltiples intentos, pero mantuvo los encabezados originales
+  del navegador.
+- La frecuencia y repetición de las solicitudes también permiten distinguir una
+  petición manual de un ataque automatizado.
+
+Detección:
+Es posible obtener indicios de qué herramienta generó el tráfico, pero no siempre
+puede determinarse de forma absoluta únicamente a partir de un paquete.
+cURL y Hydra son fácilmente reconocibles con sus User-Agent predeterminados.
+Burp puede requerir analizar además el patrón repetitivo, frecuencia y estructura
+de las solicitudes.

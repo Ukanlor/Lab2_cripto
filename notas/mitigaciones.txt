@@ -1,0 +1,53 @@
+1. Limitación de intentos (Rate Limiting)
+
+Consiste en limitar la cantidad de intentos de autenticación que puede realizar
+un cliente dentro de un intervalo de tiempo. Por ejemplo, una aplicación podría
+permitir sólo cierta cantidad de intentos por minuto asociados a una dirección IP
+o a una cuenta.
+
+Este mecanismo reduce la velocidad de un ataque automatizado de fuerza bruta,
+haciendo que probar grandes cantidades de contraseñas requiera mucho más tiempo.
+
+Es especialmente útil frente a ataques automatizados provenientes de una misma
+IP o de un número reducido de orígenes.
+
+
+2. Bloqueo temporal y retraso progresivo
+
+Después de varios intentos fallidos, la aplicación puede bloquear temporalmente
+la cuenta o aumentar progresivamente el tiempo de espera antes de permitir un
+nuevo intento.
+
+Por ejemplo, después de varios fallos consecutivos se puede imponer una espera
+de algunos segundos y aumentarla si continúan los intentos incorrectos.
+
+Es eficaz cuando un atacante intenta probar muchas contraseñas contra una misma
+cuenta. Debe utilizarse cuidadosamente para evitar que un atacante provoque
+bloqueos intencionales de cuentas legítimas.
+
+
+3. Autenticación multifactor (MFA)
+
+La autenticación multifactor solicita un segundo elemento además de la contraseña,
+como un código temporal, una aplicación autenticadora o una llave de seguridad.
+
+De esta forma, aunque un atacante descubra correctamente el usuario y la
+contraseña mediante fuerza bruta, esas credenciales por sí solas no son suficientes
+para acceder a la cuenta.
+
+Es especialmente eficaz para proteger cuentas sensibles o aplicaciones en las que
+el impacto de una cuenta comprometida sea alto.
+
+
+4. CAPTCHA o mecanismos anti-automatización
+
+Se puede solicitar un CAPTCHA o desafío adicional cuando el sistema detecta una
+cantidad anormal de intentos de autenticación.
+
+El objetivo es distinguir una interacción humana de un proceso automatizado y
+dificultar que herramientas como Hydra, Burp Intruder o scripts realicen cientos
+de intentos sin intervención humana.
+
+Es especialmente útil cuando se activa de manera adaptativa después de detectar
+comportamiento sospechoso, evitando perjudicar innecesariamente a todos los
+usuarios legítimos.
